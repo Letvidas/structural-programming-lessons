@@ -16,17 +16,17 @@ void menu()
     cout << "type 9= print history" << endl;
     cout << "type 10=to end"<<endl;
 }
-void arrayfromfile(int mas[],int &siz)
+void arrayfromfile(int arr[],int &siz)
 {
     ifstream data("data.txt");
     data>>siz;
     for (int i=0; i<siz; i++)
     {
-        data>>mas[i];
+        data>>arr[i];
     }
     data.close();
 }
-void arrayfromhand(int mas[],int &siz)
+void arrayfromhand(int arr[],int &siz)
 {
     int element;
     cout << "type size of the array"<<endl;
@@ -35,102 +35,102 @@ void arrayfromhand(int mas[],int &siz)
     {
         cout<<"type "<<i+1<<"array element"<<endl;
         cin>>element;
-        mas[i]=element;
+        arr[i]=element;
     }
 }
-void lowtohigh(int a,int mas[])
+void lowtohigh(int a,int arr[])
 {
-    int temp,masb[a];
+    int temp,arrb[a];
     for (int i=0; i<a; i++)
     {
-        masb[i]=mas[i];
+        arrb[i]=arr[i];
     }
     for (int i=0; i<a; i++)
     {
         for (int j=i; j<a; j++)
         {
-            if(masb[i]>masb[j])
+            if(arrb[i]>arrb[j])
             {
-                temp=masb[i];
-                masb[i]=masb[j];
-                masb[j]=temp;
+                temp=arrb[i];
+                arrb[i]=arrb[j];
+                arrb[j]=temp;
             }
         }
     }
     for (int i=0; i<a; i++)
     {
-        cout<<masb[i]<<" ";
+        cout<<arrb[i]<<" ";
     }
     cout<<endl;
 }
-void hightolow(int a, int mas[])
+void hightolow(int a, int arr[])
 {
-    int temp,masb[a];
+    int temp,arrb[a];
     for (int i=0; i<a; i++)
     {
-        masb[i]=mas[i];
+        arrb[i]=arr[i];
     }
     for (int i=0; i<a; i++)
     {
         for (int j=i; j<a; j++)
         {
-            if(masb[i]<masb[j])
+            if(arrb[i]<arrb[j])
             {
-                temp=masb[i];
-                masb[i]=masb[j];
-                masb[j]=temp;
+                temp=arrb[i];
+                arrb[i]=arrb[j];
+                arrb[j]=temp;
             }
         }
     }
     for (int i=0; i<a; i++)
     {
-        cout<<masb[i]<<" ";
+        cout<<arrb[i]<<" ";
     }
     cout<<endl;
 }
-double average(int siz, int mas[])
+double average(int siz, int arr[])
 {
     double avg=0;
     for (int i=0; i<siz; i++)
     {
-        avg=avg+mas[i];
+        avg=avg+arr[i];
     }
     avg=avg/siz;
     return avg;
 }
-int highest(int a, int mas[])
+int highest(int a, int arr[])
 {
     int high=-5000;
     for (int i=0; i<a; i++)
     {
-        if (high<=mas[i])
-            high=mas[i];
+        if (high<=arr[i])
+            high=arr[i];
     }
     return high;
 }
-int highestcount(int siz,int mas[],int high)
+int highestcount(int siz,int arr[],int high)
 {
     int highcount=0;
     for (int i=0; i<siz; i++)
     {
-        if (mas[i]==high)
+        if (arr[i]==high)
             highcount=highcount+1;
 
     }
     return highcount;
 }
-double multiplication(int siz,int mas[])
+double multiplication(int siz,int arr[])
 {
     double mul=1;
     for (int i=0; i<siz; i++)
     {
-        mul=mul*mas[i];
+        mul=mul*arr[i];
     }
     return mul;
 }
 int main()
 {
-    int a,siz,sizff,sizfh,mas[100],masff[100],masfh[100],highc,high;
+    int a,siz,sizff,sizfh,arr[100],arrff[100],arrfh[100],highc,high;
     double aver,mult;
     bool a1=false,a2=false,a3=false,a4=false,a5=false,a6=false,a7=false,a8=false;
     menu();
@@ -148,80 +148,82 @@ int main()
     }
     if (a==1)
     {
-        arrayfromfile(mas,siz);
+        arrayfromfile(arr,siz);
         menu();
         a1=true;
         sizff=siz;
         for (int i=0; i<siz; i++)
-            masff[i]=mas[i];
+            arrff[i]=arr[i];
     }
     if (a==2)
     {
-        arrayfromhand(mas,siz);
+        arrayfromhand(arr,siz);
         menu();
         a2=true;
         sizfh=siz;
         for (int i=0; i<siz; i++)
-            masfh[i]=mas[i];
+            arrfh[i]=arr[i];
     }
     while (a!=10)
     {
         cin>>a;
         if (a==1)
         {
-            arrayfromfile(mas,siz);
+            arrayfromfile(arr,siz);
             menu();
             sizff=siz;
             for (int i=0; i<siz; i++)
-                masff[i]=mas[i];
+                arrff[i]=arr[i];
             a1=true;
         }
         if (a==2)
         {
-            arrayfromhand(mas,siz);
+            arrayfromhand(arr,siz);
             menu();
             sizfh=siz;
             for (int i=0; i<siz; i++)
-                masfh[i]=mas[i];
+                arrfh[i]=arr[i];
             a2=true;
         }
         if (a==3)
         {
-            lowtohigh(siz,mas);
+            cout<<"array from lowest to highest"<<endl;
+            lowtohigh(siz,arr);
             menu();
             a3=true;
         }
         if (a==4)
         {
-            hightolow(siz,mas);
+            cout<<"array from highest to lowest"<<endl;
+            hightolow(siz,arr);
             menu();
             a4=true;
         }
         if (a==5)
         {
-            aver=average(siz,mas);
+            aver=average(siz,arr);
             cout<<"average = "<<aver<<endl;
             menu();
             a5=true;
         }
         if (a==6)
         {
-            high=highest(siz,mas);
+            high=highest(siz,arr);
             cout<<"highest element= "<<high<<endl;
             menu();
             a6=true;
         }
         if (a==7)
         {
-            high=highest(siz,mas);
-            highc=highestcount(siz,mas,high);
+            high=highest(siz,arr);
+            highc=highestcount(siz,arr,high);
             cout<<"count of highest = "<<highc<<endl;
             menu();
             a7=true;
         }
         if (a==8)
         {
-            mult=multiplication(siz,mas);
+            mult=multiplication(siz,arr);
             cout<<"multiplication of elements = "<<mult<<endl;
             menu();
             a8=true;
@@ -233,23 +235,25 @@ int main()
             {
                 cout<<"your array from file"<<endl;
                 for(int i=0; i<sizff; i++)
-                    cout<<masff[i]<<" ";
+                    cout<<arrff[i]<<" ";
                 cout<<endl;
             }
             if (a2==true)
             {
                 cout<<"your array which was created manually"<<endl;
                 for(int i=0; i<sizfh; i++)
-                    cout<<masfh[i]<<" ";
+                    cout<<arrfh[i]<<" ";
                 cout<<endl;
             }
             if (a3==true)
             {
-                lowtohigh(siz,mas);
+                cout<<"array from lowest to highest"<<endl;
+                lowtohigh(siz,arr);
             }
             if (a4==true)
             {
-                hightolow(siz,mas);
+                cout<<"array from highest to lowest"<<endl;
+                hightolow(siz,arr);
             }
             if (a5==true)
             {
