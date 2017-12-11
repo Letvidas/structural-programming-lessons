@@ -5,6 +5,7 @@
 #include <ctime>
 using namespace std;
 ifstream residents("residents.txt");
+ofstream allman("all_man.txt");
 time_t t = time(0);   // get time now
 struct tm * now = localtime( & t );
 unsigned int currentyear=(now->tm_year + 1900);
@@ -85,7 +86,7 @@ void all_man(resident res[],int siz)
     {
         if (res[i].sex==man)
         {
-            cout<<"There is man called "<<res[i].name<<" "<<res[i].surname<<endl;
+            allman<<"There is man called "<<res[i].name<<" "<<res[i].surname<<endl;
             a++;
         }
     }
@@ -156,5 +157,7 @@ int main()
             city_and_age(res,siz);
         }
     }
+
+    residents.close();
     return 0;
 }
