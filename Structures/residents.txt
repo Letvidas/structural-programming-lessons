@@ -1,7 +1,8 @@
-6
+7
 Petras Petraitis 1998 Vilnius Man
 Goda Simonaitë 1950 Vilnius Woman
 Jonas Jonaitis 1892 Kaunas Man
 Ilja Zavaranok 2000 Kaunas Man
-Monika Sandrutë 2001 Londonas Woman
-Valera Zajcova 2005 Rukla Woman
+Monika Sandrutë 2001 Rukla Woman
+Valera Zajcova 2006 Rukla Woman
+Migle Petraite 2006 Rukla Woman

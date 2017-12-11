@@ -25,6 +25,7 @@ void menu()
     cout<<"3 = print all man from the list"<<endl;
     cout<<"4 = print all people living in chosen city older than 30 years"<<endl;
     cout<<"5 = end structure"<<endl;
+    cout<<"6 = print the youngest woman from the list living in Rukla"<<endl;
 }
 void structure(resident res[],int &siz)
 {
@@ -36,6 +37,44 @@ void structure(resident res[],int &siz)
         residents>>res[i].year;
         residents>>res[i].city;
         residents>>res[i].sex;
+    }
+}
+void rukla_youngest_woman(resident res[], int siz)
+{
+    string sex="Woman",city="Rukla";
+    unsigned int youngest=3000,a=0;
+    for (int i=0; i<siz; i++)
+    {
+        if (res[i].city==city)
+        {
+            if (res[i].sex==sex)
+            {
+                if(youngest>=currentyear-res[i].year)
+                {
+                    youngest=currentyear-res[i].year;
+                    a++;
+                }
+            }
+        }
+
+    }
+    for (int i=0; i<siz; i++)
+    {
+        if (res[i].city==city)
+        {
+            if (res[i].sex==sex)
+            {
+                if(youngest==currentyear-res[i].year)
+                {
+                    cout<<"Youngest woman living in Rukla is "<<res[i].name<<" "<<res[i].surname<<" and she is "<<currentyear-res[i].year<<" years old"<<endl;
+                }
+            }
+        }
+
+    }
+    if (a==0)
+    {
+        cout<<"there is no Woman in the list who lives in Rukla"<<endl;
     }
 }
 void eldest(resident res[],int siz)
@@ -131,9 +170,9 @@ int main()
         menu();
         cin>>option;
 
-        while (option<1||option>5)
+        while (option<1||option>6)
         {
-            if (option<1||option>5)
+            if (option<1||option>6)
             {
                 cout<<"invalid option try again"<<endl;
                 menu();
@@ -156,8 +195,17 @@ int main()
         {
             city_and_age(res,siz);
         }
+        else if (option==5)
+        {
+
+        }
+        else if (option==6)
+        {
+            rukla_youngest_woman(res,siz);
+        }
     }
 
     residents.close();
+    allman.close();
     return 0;
 }
